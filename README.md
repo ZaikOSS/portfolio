@@ -21,5 +21,3 @@ Welcome to my **personal portfolio website**! This project showcases my work, sk
 - **Responsive Design**: Ensures smooth user experience on all devices.  
 
 ---
-
-## 📂 **Project Structure**
