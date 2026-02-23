@@ -2,34 +2,28 @@ import { motion } from "framer-motion";
 
 interface SkillCategory {
   title: string;
-  icon: string;
   skills: string[];
 }
 
 const categories: SkillCategory[] = [
   {
     title: "Frontend",
-    icon: "🎨",
     skills: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Next.js"],
   },
   {
     title: "Backend",
-    icon: "⚙️",
     skills: ["Node.js", "Express", "PHP", "Python", "REST APIs", "GraphQL"],
   },
   {
     title: "Databases",
-    icon: "🗄️",
     skills: ["MySQL", "PostgreSQL", "MongoDB", "Supabase", "Firebase"],
   },
   {
     title: "Cybersecurity",
-    icon: "🛡️",
     skills: ["Nmap", "Wireshark", "Burp Suite", "Docker Security", "AppArmor", "Seccomp", "CTF"],
   },
   {
     title: "DevOps & Tools",
-    icon: "🔧",
     skills: ["Git", "Docker", "Linux", "CI/CD", "VS Code", "ELK Stack"],
   },
 ];
@@ -60,7 +54,6 @@ const SkillsSection = () => {
               transition={{ delay: i * 0.1 }}
               className="bg-card border border-border rounded-xl p-6 card-hover"
             >
-              <div className="text-2xl mb-3">{cat.icon}</div>
               <h3 className="text-lg font-bold text-foreground mb-4">{cat.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
