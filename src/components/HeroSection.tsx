@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
+import ScratchCard from "./ScratchCard";
 
 const HeroSection = () => {
   return (
@@ -13,40 +14,47 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <p className="font-mono text-primary text-sm mb-4 tracking-widest uppercase">
-            <span className="animate-blink">▌</span> Hello, World
-          </p>
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Text content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="flex-1 text-center lg:text-left"
+          >
+            <p className="font-mono text-primary text-sm mb-4 tracking-widest uppercase">
+              <span className="animate-blink">▌</span> Hello, World
+            </p>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
-            <span className="text-foreground">Zakaria </span>
-            <span className="gradient-text">Ouadifi</span>
-          </h1>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
+              <span className="text-foreground">Zakaria </span>
+              <span className="gradient-text">Ouadifi</span>
+            </h1>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            Full-Stack Developer & Cybersecurity Enthusiast — building secure, scalable, and elegant digital experiences.
-          </p>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+              Full-Stack Developer & Cybersecurity Enthusiast — building secure, scalable, and elegant digital experiences.
+            </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-primary text-primary font-mono text-sm font-semibold rounded-lg hover:bg-primary/10 transition-colors"
-            >
-              Get in Touch
-            </a>
-          </div>
-        </motion.div>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
+              >
+                View Projects
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-primary text-primary font-mono text-sm font-semibold rounded-lg hover:bg-primary/10 transition-colors"
+              >
+                Get in Touch
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Scratch card */}
+          <ScratchCard />
+        </div>
 
         {/* Scroll indicator */}
         <motion.div
