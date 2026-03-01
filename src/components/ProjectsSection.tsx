@@ -1,5 +1,14 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Star, Calendar, Loader2, AlertCircle } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Star,
+  Calendar,
+  Loader2,
+  AlertCircle,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import { useEffect, useState, useMemo } from "react";
 
 interface GitHubRepo {
@@ -16,6 +25,7 @@ interface GitHubRepo {
 type SortMode = "updated" | "stars";
 
 const FEATURED = ["honeypot-elk", "SQLi_Lab_SecOps", "nmap-docker-lab-secops"];
+const INITIAL_VISIBLE = 6; // Number of projects to show initially
 
 const ProjectsSection = () => {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -24,8 +34,13 @@ const ProjectsSection = () => {
   const [activeLang, setActiveLang] = useState("All");
   const [sort, setSort] = useState<SortMode>("updated");
 
+  // New state for handling how many projects are visible
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
+
   useEffect(() => {
-    fetch("https://api.github.com/users/ZaikOSS/repos?per_page=100&sort=updated")
+    fetch(
+      "https://api.github.com/users/ZaikOSS/repos?per_page=100&sort=updated",
+    )
       .then((r) => {
         if (!r.ok) throw new Error("Failed to fetch repositories");
         return r.json();
@@ -42,17 +57,32 @@ const ProjectsSection = () => {
   }, [repos]);
 
   const filtered = useMemo(() => {
-    let list = activeLang === "All" ? repos : repos.filter((r) => r.language === activeLang);
+    let list =
+      activeLang === "All"
+        ? repos
+        : repos.filter((r) => r.language === activeLang);
     list = [...list].sort((a, b) =>
       sort === "stars"
         ? b.stargazers_count - a.stargazers_count
-        : new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+        : new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
     );
     return list;
   }, [repos, activeLang, sort]);
 
+  // Reset visible count whenever the user changes the filter or sort
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE);
+  }, [activeLang, sort]);
+
   const formatDate = (d: string) =>
-    new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    new Date(d).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+
+  // Slice the filtered array to only show the visible count
+  const displayedProjects = filtered.slice(0, visibleCount);
 
   return (
     <section id="projects" className="py-24 px-6">
@@ -73,7 +103,9 @@ const ProjectsSection = () => {
         {loading && (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
             <Loader2 className="w-8 h-8 text-primary animate-spin" />
-            <p className="text-muted-foreground font-mono text-sm">Fetching repositories…</p>
+            <p className="text-muted-foreground font-mono text-sm">
+              Fetching repositories…
+            </p>
           </div>
         )}
 
@@ -124,7 +156,11 @@ const ProjectsSection = () => {
                         : "bg-card text-muted-foreground border-border hover:border-primary/50"
                     }`}
                   >
-                    {mode === "updated" ? <Calendar size={12} /> : <Star size={12} />}
+                    {mode === "updated" ? (
+                      <Calendar size={12} />
+                    ) : (
+                      <Star size={12} />
+                    )}
                     {mode === "updated" ? "Recent" : "Stars"}
                   </button>
                 ))}
@@ -132,13 +168,14 @@ const ProjectsSection = () => {
             </div>
 
             <p className="text-xs text-muted-foreground font-mono text-center mb-6">
-              {filtered.length} repositor{filtered.length === 1 ? "y" : "ies"} found
+              Showing {displayedProjects.length} of {filtered.length} repositor
+              {filtered.length === 1 ? "y" : "ies"}
             </p>
 
             {/* Grid */}
             <div className="grid md:grid-cols-2 gap-6">
               <AnimatePresence mode="popLayout">
-                {filtered.map((repo) => {
+                {displayedProjects.map((repo) => {
                   const isFeatured = FEATURED.includes(repo.name);
                   return (
                     <motion.div
@@ -191,6 +228,26 @@ const ProjectsSection = () => {
                   );
                 })}
               </AnimatePresence>
+            </div>
+
+            {/* Pagination Controls */}
+            <div className="mt-12 flex justify-center gap-4">
+              {visibleCount < filtered.length && (
+                <button
+                  onClick={() => setVisibleCount((prev) => prev + 6)}
+                  className="flex items-center gap-2 px-6 py-2.5 bg-primary/10 text-primary hover:bg-primary/20 rounded-lg font-mono text-sm transition-colors border border-primary/20"
+                >
+                  See More <ChevronDown size={16} />
+                </button>
+              )}
+              {visibleCount > INITIAL_VISIBLE && (
+                <button
+                  onClick={() => setVisibleCount(INITIAL_VISIBLE)}
+                  className="flex items-center gap-2 px-6 py-2.5 bg-card text-muted-foreground hover:text-foreground rounded-lg font-mono text-sm transition-colors border border-border hover:border-primary/50"
+                >
+                  Show Less <ChevronUp size={16} />
+                </button>
+              )}
             </div>
           </>
         )}

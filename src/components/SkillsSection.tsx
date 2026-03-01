@@ -8,7 +8,15 @@ interface SkillCategory {
 const categories: SkillCategory[] = [
   {
     title: "Frontend",
-    skills: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Next.js"],
+    skills: [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Next.js",
+    ],
   },
   {
     title: "Backend",
@@ -20,11 +28,30 @@ const categories: SkillCategory[] = [
   },
   {
     title: "Cybersecurity",
-    skills: ["Nmap", "Wireshark", "Burp Suite", "Docker Security", "AppArmor", "Seccomp", "CTF"],
+    skills: [
+      "Wazuh",
+      "Nmap",
+      "Wireshark",
+      "Burp Suite",
+      "Docker Security",
+      "AppArmor",
+      "Seccomp",
+      "CTF",
+    ],
   },
   {
     title: "DevOps & Tools",
-    skills: ["Git", "Docker", "Linux", "CI/CD", "VS Code", "ELK Stack"],
+    skills: [
+      "Git",
+      "Docker",
+      "Linux",
+      "CI/CD",
+      "VS Code",
+      "ELK Stack",
+      "Grafana",
+      "Loki",
+      "Promtail",
+    ],
   },
 ];
 
@@ -54,7 +81,9 @@ const SkillsSection = () => {
               transition={{ delay: i * 0.1 }}
               className="bg-card border border-border rounded-xl p-6 card-hover"
             >
-              <h3 className="text-lg font-bold text-foreground mb-4">{cat.title}</h3>
+              <h3 className="text-lg font-bold text-foreground mb-4">
+                {cat.title}
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <span
