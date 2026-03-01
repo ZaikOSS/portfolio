@@ -1,6 +1,6 @@
 # > ZaikOS // Personal Portfolio
 
-![Portfolio Preview](https://ouadifi-zakaria.xo.je/og-image.png) > A terminal-inspired personal portfolio built to showcase my journey, projects, and skills in Cybersecurity and Full-Stack Development. 
+> A terminal-inspired personal portfolio built to showcase my journey, projects, and skills in Cybersecurity and Full-Stack Development. 
 
 **Live Demo:** [ouadifi-zakaria.xo.je](https://ouadifi-zakaria.xo.je)
 
@@ -84,6 +84,4 @@ Navigate to `http://localhost:8080` (or the port provided in your terminal).
 
 * **LinkedIn:** [Zakaria Ouadifi](https://www.linkedin.com/in/zakaria-ouadifi/) * **TryHackMe:** [Zaikos](https://tryhackme.com/p/Z4ik0S) ---
 *Built with keyboard and caffeine by Zaikos.*
-
-```
 
