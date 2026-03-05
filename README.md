@@ -2,7 +2,7 @@
 
 > A terminal-inspired personal portfolio built to showcase my journey, projects, and skills in Cybersecurity and Full-Stack Development.
 
-**Live Demo:** [ouadifi-zakaria.xo.je](https://ouadifi-zakaria.xo.je)
+**Live Demo:** [zakaria-ouadifi.buzz](https://zakaria-ouadifi.buzz/)
 
 ---
 

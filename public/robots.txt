@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ouadifi-zakaria.xo.je/sitemap.xml
+Sitemap: https://zakaria-ouadifi.buzz/sitemap.xml
