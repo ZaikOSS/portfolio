@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "About", href: "#about" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -25,7 +27,9 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"
+        scrolled
+          ? "bg-background/90 backdrop-blur-md border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -53,7 +57,13 @@ const Navbar = () => {
           className="md:hidden text-foreground"
           aria-label="Toggle menu"
         >
-          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             {mobileOpen ? (
               <path d="M6 6l12 12M6 18L18 6" />
             ) : (
@@ -68,7 +78,7 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-background/95 backdrop-blur-md border-b border-border"
+          className="md:hidden bg-background/95 backdrop-blur-md border-b border-border absolute top-full left-0 w-full"
         >
           <ul className="flex flex-col px-6 py-4 gap-4">
             {navLinks.map((link) => (
@@ -76,7 +86,7 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono block py-2"
                 >
                   {link.label}
                 </a>

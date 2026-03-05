@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 
-
 const ContactSection = () => {
   return (
     <section id="contact" className="py-24 px-6">
@@ -17,7 +16,8 @@ const ContactSection = () => {
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-md mx-auto">
-            Open to internships, collaborations, and interesting projects. Feel free to reach out!
+            Open to internships, collaborations, and interesting projects. Feel
+            free to reach out!
           </p>
         </motion.div>
 
@@ -36,7 +36,9 @@ const ContactSection = () => {
             </div>
             <div>
               <div className="text-sm font-semibold text-foreground">Email</div>
-              <div className="text-xs text-muted-foreground">zakaria.ouadifi@usmba.ac.ma</div>
+              <div className="text-xs text-muted-foreground">
+                zakaria.ouadifi@usmba.ac.ma
+              </div>
             </div>
           </a>
 
@@ -50,7 +52,9 @@ const ContactSection = () => {
               <Github className="text-primary" size={20} />
             </div>
             <div>
-              <div className="text-sm font-semibold text-foreground">GitHub</div>
+              <div className="text-sm font-semibold text-foreground">
+                GitHub
+              </div>
               <div className="text-xs text-muted-foreground">@ZaikOSS</div>
             </div>
           </a>
@@ -65,8 +69,12 @@ const ContactSection = () => {
               <Linkedin className="text-primary" size={20} />
             </div>
             <div>
-              <div className="text-sm font-semibold text-foreground">LinkedIn</div>
-              <div className="text-xs text-muted-foreground">in/zakaria-ouadifi</div>
+              <div className="text-sm font-semibold text-foreground">
+                LinkedIn
+              </div>
+              <div className="text-xs text-muted-foreground">
+                in/zakaria-ouadifi
+              </div>
             </div>
           </a>
         </motion.div>
